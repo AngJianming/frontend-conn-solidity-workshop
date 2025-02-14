@@ -13,4 +13,4 @@ contract TestCounter {
     function getCount() public view returns (int) {
         return count;
     }
-}
+};
