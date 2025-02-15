@@ -1,16 +1,20 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.25;
+pragma solidity ^0.8.26;
 
-contract TestCounter {
-    int private count = 0;
-    function incrementCounter() public {
-        count += 1;
-    }
-    function decrementCounter() public {
-        count -= 1;
+contract GetData {
+    
+    uint num;
+
+    function getNum() public view returns (uint256) {
+
+        return num;
+
     }
 
-    function getCount() public view returns (int) {
-        return count;
+    function changeNum(uint256 _newNum) public returns (uint256) {
+
+        num = _newNum;
+        return num;
+        
     }
 }
