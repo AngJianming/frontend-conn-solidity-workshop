@@ -5,13 +5,13 @@ import {
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
-import { mainnet, polygon, optimism, arbitrum, polygonMumbai } from 'wagmi/chains';
+import { mainnet, polygon, optimism, arbitrum, polygonMumbai, sepolia } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
 
 
 const { chains, provider } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, polygonMumbai],
+  [sepolia, mainnet, polygon, optimism, arbitrum, polygonMumbai],
   [publicProvider()]
 );
 
