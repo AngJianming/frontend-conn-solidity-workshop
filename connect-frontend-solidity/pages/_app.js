@@ -8,6 +8,8 @@ import { configureChains, createClient, WagmiConfig } from 'wagmi';
 import { mainnet, polygon, optimism, arbitrum, polygonMumbai } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
+
+
 const { chains, provider } = configureChains(
   [mainnet, polygon, optimism, arbitrum, polygonMumbai],
   [publicProvider()]
@@ -24,14 +26,14 @@ const wagmiClient = createClient({
   provider
 })
 
- function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
-       <Component {...pageProps} />
-     </RainbowKitProvider>
+        <Component {...pageProps} />
+      </RainbowKitProvider>
     </WagmiConfig>
   )
 }
 
-export default dynamic (() => Promise.resolve(App), {ssr: false})
+export default dynamic(() => Promise.resolve(App), { ssr: false })
