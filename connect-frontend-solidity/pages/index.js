@@ -49,7 +49,9 @@ export default function Home() {
       <main className={styles.main}>
         <ConnectButton />
         <p>Enter New Number: </p>
-        <input onChange={(e) => setNumber(e.target.value)} type="number" />
+        <input 
+          onChange={(e) => setNumber(Number(e.target.value))}type="number"
+        />
         <button disabled={!write} onClick={() => { write?.() }}>Change Number </button>
         {isSuccess && <div >{useContractReadData.toNumber()}</div>}
 
