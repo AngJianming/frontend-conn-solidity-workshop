@@ -12,10 +12,5 @@ contract getData {
         num = _newNum;
         return num;
     }
-
-    function withdrawMoney() public {
-        address payable to = payable(msg.sender);
-        to.transfer(changeNumber());
-    }
 }
 
