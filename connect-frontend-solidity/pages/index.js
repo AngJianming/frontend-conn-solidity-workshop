@@ -29,7 +29,7 @@ export default function Home() {
 
   })
 
-  const { data: useContractWriteData, write } = useContractWrite(config)
+  const { data: useContractWriteData, write, error: writeError } = useContractWrite(config)
 
   const { data: useWaitForTransactionData, isSuccess } = useWaitForTransaction({
     hash: useContractWriteData?.hash
@@ -43,6 +43,11 @@ export default function Home() {
     console.log("__________________________");
   }, [useContractReadData, useContractWriteData, useWaitForTransactionData]);
 
+  useEffect(() => {
+    if (writeError) {
+      console.error("Write Error:", writeError);
+    }
+  }, [writeError]);
 
   return (
     <>
@@ -50,11 +55,13 @@ export default function Home() {
         <ConnectButton />
         <p>Enter New Number: </p>
         <input 
+          class="Input"
           onChange={(e) => setNumber(Number(e.target.value))}type="number"
         />
-        <button disabled={!write} onClick={() => { write?.() }}>Change Number </button>
-        {isSuccess && <div >{useContractReadData.toNumber()}</div>}
-
+        <button className={styles.btn} disabled={!write} onClick={() => { write?.() }}>
+          Change Number
+        </button>
+        {isSuccess && <div>{useContractReadData.toNumber()}</div>}
       </main>
     </>
   )
