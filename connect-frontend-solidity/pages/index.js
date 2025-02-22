@@ -15,14 +15,14 @@ export default function Home() {
   const [number, setNumber] = useState(0)
 
   const { data: useContractReadData } = useContractRead({
-    address: '0x02E06e2930A40eb280F30b2a22e6a585C4aA6D9A', // change to your own address
+    address: '0xBc0AC9B08C5f9daAfd9c0fd45416864e95DE82F3', // change to your own address
     abi: contractABI.abi,
     functionName: 'getNumber',
     watch: true
   })
 
   const { config } = usePrepareContractWrite({
-    address: '0x02E06e2930A40eb280F30b2a22e6a585C4aA6D9A', // change to your own address
+    address: '0xBc0AC9B08C5f9daAfd9c0fd45416864e95DE82F3', // change to your own address
     abi: contractABI.abi,
     functionName: 'changeNumber',
     args: [number],
@@ -55,7 +55,7 @@ export default function Home() {
         <ConnectButton />
         <p>Enter New Number: </p>
         <input 
-          class="Input"
+          className="put"
           onChange={(e) => setNumber(Number(e.target.value))}type="number"
         />
         <button className={styles.btn} disabled={!write} onClick={() => { write?.() }}>
